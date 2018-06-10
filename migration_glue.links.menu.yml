@@ -1,0 +1,6 @@
+migration_glue.create_migration:
+  title: 'Migration Glue'
+  description: 'Create and run migrations by UI.'
+  route_name: migration_glue.create_migration
+  parent: system.admin_config_development
+  weight: 99

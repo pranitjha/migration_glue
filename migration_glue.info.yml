@@ -1,0 +1,9 @@
+name: Migration Glue
+type: module
+description: 'Glue between migrate_tools and migration_mapper.'
+package: Migration
+core: 8.x
+configure: migration_glue.create_migration
+dependencies:
+  - migrate_tools
+  - migration_mapper
