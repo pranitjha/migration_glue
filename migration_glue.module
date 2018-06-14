@@ -46,7 +46,6 @@ function _migration_glue_submit_handler(array &$form, FormStateInterface $form_s
     // Parsed yml to array.
     $parsed_yml = Yaml::parse($output);
 
-    // @Todo - Need to make it more generic (like for CSV).
     $parsed_yml['source']['data_fetcher_plugin'] = 'http';
     $parsed_yml['source']['urls'] = $source['json_path'];
     $parsed_yml['source']['item_selector'] = $source['json_item_selector'];
