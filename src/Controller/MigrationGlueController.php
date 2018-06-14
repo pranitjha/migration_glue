@@ -19,12 +19,12 @@ class MigrationGlueController extends ControllerBase {
    *   Migration creation form.
    */
   public function createMigration() {
-    $form_builder = \Drupal::formBuilder();
-    $form = $form_builder->getForm('\Drupal\migration_mapper\Form\MigrationAdminForm');
-    return $form;
+    return $this->formBuilder()->getForm('\Drupal\migration_mapper\Form\MigrationAdminForm');
   }
 
   /**
+   * Execute migration form.
+   *
    * @param string $migration_group
    *   Migration group name.
    * @param string $migration
@@ -35,15 +35,12 @@ class MigrationGlueController extends ControllerBase {
    */
   public function runMigration($migration_group = 'no_migration', $migration = 'no_migration') {
     if ($migration == 'no_migration' || $migration_group == 'no_migration') {
-      // @todo: Use messageer service.
-      drupal_set_message(t('Please create your migration first.'), 'error');
+      $this->messenger->addError(t('Please create your migration first.'));
       $url = Url::fromRoute('migration_glue.create_migration')->toString();
       return new RedirectResponse($url);
     }
 
-    $form_builder = \Drupal::formBuilder();
-    $form = $form_builder->getForm('\Drupal\migrate_tools\Form\MigrationExecuteForm');
-    return $form;
+    return $this->formBuilder()->getForm('\Drupal\migrate_tools\Form\MigrationExecuteForm');
   }
 
   /**
@@ -59,8 +56,7 @@ class MigrationGlueController extends ControllerBase {
     // @todo: Refactor/Adjust operation link/button on list page so that it
     // redirects or takes user to migration_glue.run_migration route or remove
     // those operation links if possible.
-    $render = \Drupal::entityTypeManager()->getListBuilder('migration')->render();
-    return $render;
+    return $this->entityTypeManager()->getListBuilder('migration')->render();
   }
 
 }

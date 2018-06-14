@@ -54,8 +54,8 @@ function _migration_glue_submit_handler(array &$form, FormStateInterface $form_s
   // Register the migration in system.
   _migration_glue_register_migration($parsed_yml);
 
-  // @Todo: Use message service.
-  drupal_set_message(t('Migration @migration has been created successfully.', ['@migration' => $parsed_yml['id']]));
+  // Adding status message.
+  \Drupal::messenger()->addStatus(t('Migration @migration has been created successfully.', ['@migration' => $parsed_yml['id']]));
 
   // Redirect to next step.
   $form_state->setRedirect('migration_glue.run_migration', [
