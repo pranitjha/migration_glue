@@ -32,7 +32,8 @@ function _migration_glue_submit_handler(array &$form, FormStateInterface $form_s
   // Get exported output.
   $output = $form_state->getValue('output')['export'];
   $source = $form_state->getValue('data_source_config_wrapper')['source'];
-  if ($source['plugin'] == 'json') {
+  $source_type = $form_state->getValue('data_source');
+  if ($source_type == 'json') {
     // Item selector must have a trailing slash as we are replacing it with empty
     // string. If no tailing slash, then we adding it here.
     $item_selector = substr($source['json_item_selector'], -1) == '/' ? $source['json_item_selector'] : $source['json_item_selector'] . '/';
