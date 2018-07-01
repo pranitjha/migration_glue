@@ -5,6 +5,7 @@
  * Module file.
  */
 
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\Yaml\Yaml;
 
@@ -58,6 +59,9 @@ function _migration_glue_submit_handler(array &$form, FormStateInterface $form_s
 
   // Register the migration in system.
   _migration_glue_register_migration($parsed_yml);
+
+  // Invalidate the cache so that the 'discovery_migration' cache bin re-built.
+  Cache::invalidateTags(['migration_plugins']);
 
   // Adding status message.
   \Drupal::messenger()->addStatus(t('Migration @migration has been created successfully.', ['@migration' => $parsed_yml['id']]));
