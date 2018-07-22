@@ -60,7 +60,7 @@ function _migration_glue_validate_handler(array &$form, FormStateInterface $form
     if ($source['read_directory'] && !is_dir($source['json_path'])) {
       $form_state->setErrorByName('data_source_config_wrapper][source][json_path', t('Please provide a valid directory.'));
     }
-    else {
+    elseif($source['read_directory']) {
       // @todo: Need to revisit this once
       // https://www.drupal.org/project/migrate_plus/issues/2921374 is fixed.
       // Get all files from the directory of given type.
