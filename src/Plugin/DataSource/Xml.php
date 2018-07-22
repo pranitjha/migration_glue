@@ -57,7 +57,7 @@ class Xml extends DataSourceBase {
       '#title' => 'Item selector',
       '#default_value' => '/this/test',
     ];
-    $form['source']['json_key'] = [
+    $form['source']['xml_key'] = [
       '#type' => 'textfield',
       '#title' => 'Key',
       '#default_value' => 'id',
