@@ -21,25 +21,47 @@ class Xml extends DataSourceBase {
    * {@inheritdoc}
    */
   public function process(string $data, array $config) {
-    // Load XML object.
-    $xml = simplexml_load_string($data);
-    $xpath = $item_path = $config['source']['xml_item_selector'];;
-    $simple_xml_elements = $xml->xpath($xpath);
 
-    foreach ($simple_xml_elements as $simple_xml_element) {
-      foreach ($simple_xml_element->children() as $children) {
-        $name = $children->getName();
-      }
+    // Load XML object.
+    $data = simplexml_load_string($data);
+    $data = json_encode($data);
+    $data = json_decode($data, true);
+
+    $item_path = $config['xml_item_selector'];
+    $item_paths = array_filter(explode('/', $item_path), function ($item) {
+        return !empty($item);
+    });
+
+    foreach ($item_paths as $path_segment) {
+        $data = $data[$path_segment];
+    }
+    array_walk($data, [$this, 'recursiveWalk']);
+
+    return $this->sourcePaths;
+  }
+
+  /**
+   * Recursively walk through data.
+   *
+   * @param string $value
+   *   Inputted data.
+   * @param string $key
+   *   Inputted key.
+   * @param string $xml_path
+   *   Inputted path.
+   */
+  public function recursiveWalk($value, $key, $xml_path = NULL) {
+    if (is_string($key)) {
+      $xml_path = $xml_path . '/' . $key;
     }
 
-    // Here we hardcoding returning array. We need to return data in this
-    // format.
-    return [
-      '/pages/page/id' => '/pages/page/id',
-      '/pages/page/title' => '/pages/page/title',
-      '/pages/page/names' => '/pages/page/names',
-    ];
+    if (is_array($value)) {
+      array_walk($value, [$this, 'recursiveWalk'], $xml_path);
+    };
 
+    if (!empty($xml_path) && is_string($key)) {
+      $this->sourcePaths[$xml_path] = $xml_path;
+    }
   }
 
   /**
