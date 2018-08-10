@@ -56,25 +56,27 @@ function _migration_glue_validate_handler(array &$form, FormStateInterface $form
   // If XML or JSON.
   if ($source_type == 'json' || $source_type == 'xml') {
     $source = $form_state->getValue('data_source_config_wrapper')['source'];
+    // Directory path.
+    $dir_path = $source[$source_type . '_path'];
     // If not a valid directory, throw error.
-    if ($source['read_directory'] && !is_dir($source['json_path'])) {
-      $form_state->setErrorByName('data_source_config_wrapper][source][json_path', t('Please provide a valid directory.'));
+    if ($source['read_directory'] && !is_dir($dir_path)) {
+      $form_state->setErrorByName('data_source_config_wrapper][source][' . $source_type . '_path', t('Please provide a valid directory.'));
     }
     elseif($source['read_directory']) {
       // @todo: Need to revisit this once
       // https://www.drupal.org/project/migrate_plus/issues/2921374 is fixed.
       // Get all files from the directory of given type.
-      $files = _migration_glue_get_all_files_in_directory($source['json_path'], $source_type);
+      $files = _migration_glue_get_all_files_in_directory($dir_path, $source_type);
 
       // If no file found in the given directory of given type.
       if (empty($files)) {
-        $form_state->setErrorByName('data_source_config_wrapper][source][json_path', t('No file available of the @type type in the @directory directory.', [
+        $form_state->setErrorByName('data_source_config_wrapper][source][' . $source_type . '_path', t('No file available of the @type type in the @directory directory.', [
           '@type' => $source_type,
-          '@directory' => $source['json_path'],
+          '@directory' => $dir_path,
         ]));
       }
       else {
-        $form_state->setValue(['data_source_config_wrapper', 'source', 'json_path'], $files);
+        $form_state->setValue(['data_source_config_wrapper', 'source', $source_type . '_path'], $files);
       }
     }
   }
@@ -88,12 +90,16 @@ function _migration_glue_submit_handler(array &$form, FormStateInterface $form_s
   $output = $form_state->getValue('output')['export'];
   $source = $form_state->getValue('data_source_config_wrapper')['source'];
   $source_type = $form_state->getValue('data_source');
+  // It will be like 'json_item_selector' or 'xml_item_selector'.
+  $item_selector_key = $source_type . '_item_selector';
+  // It will be like 'json_path' or 'xml_path'.
+  $url_path = $source_type . '_path';
 
-  // If source is JSON.
-  if ($source_type == 'json') {
+  // If source is JSON/XML.
+  if ($source_type == 'json' || $source_type == 'xml') {
     // Item selector must have a trailing slash as we are replacing it with empty
     // string. If no tailing slash, then we adding it here.
-    $item_selector = substr($source['json_item_selector'], -1) == '/' ? $source['json_item_selector'] : $source['json_item_selector'] . '/';
+    $item_selector = substr($source[$item_selector_key], -1) == '/' ? $source[$item_selector_key] : $source[$item_selector_key] . '/';
 
     // We are removing item selector from the source and process part of the
     // migration output otherwise migration throws error -
@@ -104,8 +110,8 @@ function _migration_glue_submit_handler(array &$form, FormStateInterface $form_s
     // Parsed yml to array.
     $parsed_yml = Yaml::parse($output);
 
-    $parsed_yml['source']['urls'] = $source['json_path'];
-    $parsed_yml['source']['item_selector'] = $source['json_item_selector'];
+    $parsed_yml['source']['urls'] = $source[$url_path];
+    $parsed_yml['source']['item_selector'] = $source[$item_selector_key];
   }
   else {
     // Parsed yml to array.

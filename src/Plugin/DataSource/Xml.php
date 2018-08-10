@@ -24,6 +24,8 @@ class Xml extends DataSourceBase {
 
     // Load XML object.
     $data = simplexml_load_string($data);
+    // Get the root element key.
+    $root_element_key = $data->getName();
     $data = json_encode($data);
     $data = json_decode($data, true);
 
@@ -36,6 +38,17 @@ class Xml extends DataSourceBase {
         $data = $data[$path_segment];
     }
     array_walk($data, [$this, 'recursiveWalk']);
+
+    if (!empty($this->sourcePaths)) {
+      $modified_array = [];
+      foreach ($this->sourcePaths as $key => $value) {
+        // Appending the root level element to each key.
+        $modified_array['/' . $root_element_key . $key] = '/' . $root_element_key . $value;
+      }
+
+      // Updating the source path with the modified value.
+      $this->sourcePaths = $modified_array;
+    }
 
     return $this->sourcePaths;
   }
