@@ -21,6 +21,7 @@ class Users extends DestinationTypeBase {
   public function getDestinationYml() {
     return [
       'plugin' => 'entity:user',
+      'md5_passwords' =>  TRUE,
     ];
   }
 
