@@ -1,0 +1,4 @@
+services:
+  migration_glue.manager:
+    class: Drupal\migration_glue\MigrationGlueManager
+    arguments: ['@config.factory']

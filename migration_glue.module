@@ -5,7 +5,6 @@
  * Module file.
  */
 
-use Drupal\Core\Cache\Cache;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\Yaml\Yaml;
 
@@ -66,7 +65,7 @@ function _migration_glue_validate_handler(array &$form, FormStateInterface $form
       // @todo: Need to revisit this once
       // https://www.drupal.org/project/migrate_plus/issues/2921374 is fixed.
       // Get all files from the directory of given type.
-      $files = _migration_glue_get_all_files_in_directory($dir_path, $source_type);
+      $files = \Drupal::service('migration_glue.manager')->getFilesInDirectory($dir_path, $source_type);
 
       // If no file found in the given directory of given type.
       if (empty($files)) {
@@ -119,10 +118,7 @@ function _migration_glue_submit_handler(array &$form, FormStateInterface $form_s
   }
 
   // Register the migration in system.
-  _migration_glue_register_migration($parsed_yml);
-
-  // Invalidate the cache so that the 'discovery_migration' cache bin re-built.
-  Cache::invalidateTags(['migration_plugins']);
+  \Drupal::service('migration_glue.manager')->registerMigration($parsed_yml);
 
   // Adding status message.
   \Drupal::messenger()->addStatus(t('Migration @migration has been created successfully.', ['@migration' => $parsed_yml['id']]));
@@ -132,32 +128,4 @@ function _migration_glue_submit_handler(array &$form, FormStateInterface $form_s
     'migration' => $parsed_yml['id'],
     'migration_group' => $parsed_yml['migration_group'],
   ]);
-}
-
-/**
- * Gets all files of given type from the given directory recursively.
- *
- * @param string $directory_path
- *   Directory path.
- * @param string $file_type
- *   File type (JSON/XML).
- *
- * @return array
- *   All files of given type in the given directory.
- */
-function _migration_glue_get_all_files_in_directory(string $directory_path, string $file_type = 'json') {
-  return glob($directory_path . '/*.' . $file_type);
-}
-
-/**
- * Register a migration to the system.
- *
- * @param array $yml_data
- *   YML content.
- */
-function _migration_glue_register_migration(array $yml_data = []) {
-  if (!empty($yml_data)) {
-    $migration_name = 'migrate_plus.migration.' . $yml_data['id'];
-    \Drupal::configFactory()->getEditable($migration_name)->setData($yml_data)->save();
-  }
 }
