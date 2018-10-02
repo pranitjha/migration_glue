@@ -37,7 +37,7 @@ function migration_glue_form_alter(array &$form, FormStateInterface $form_state,
 
     $form['output']['sample_output_yml'] = [
       '#type' => 'markup',
-      '#markup' => '<div>For sample output YML, check <a href="https://github.com/joshirohit100/migration_glue/blob/master/migration_sample_code.md">migration_glue/migration_sample_code.md</a> file.</div>',
+      '#markup' => '<div>In case you need to enhance the output YML, refer <a target="_blank" href="https://github.com/joshirohit100/migration_glue/blob/master/migration_sample_code.md">migration_sample_code.md</a> file.</div>',
       '#html' => TRUE,
     ];
 
