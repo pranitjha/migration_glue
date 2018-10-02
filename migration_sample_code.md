@@ -1,4 +1,4 @@
-# migration_glue
+# Enhance the Migration YML output by using available Core / Contrib Process Plugins
 
 [List of core process plugins](https://www.drupal.org/docs/8/api/migrate-api/migrate-process-plugins/list-of-core-process-plugins)
 
