@@ -5,7 +5,7 @@ package: Migration
 core: 8.x
 configure: migration_glue.create_migration
 dependencies:
-  - migrate_tools:migrate_tools
+  - migrate_tools:migrate_tools (= 4.0-rc1)
   - migration_mapper:migration_mapper
   - migrate_source_csv:migrate_source_csv
   - migrate_file:migrate_file
