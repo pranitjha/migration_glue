@@ -9,3 +9,4 @@ dependencies:
   - migration_mapper:migration_mapper
   - migrate_source_csv:migrate_source_csv
   - migrate_file:migrate_file
+  - migrate_process_inline_images:migrate_process_inline_images
