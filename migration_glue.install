@@ -15,6 +15,7 @@ function migration_glue_install() {
   if (empty($default_group = MigrationGroup::load('default'))) {
     $group_configuration = [
       'id' => 'default',
+      'label' => 'Default',
     ];
     $migration_group = \Drupal::getContainer()->get('entity_type.manager')
       ->getStorage('migration_group')->create($group_configuration);
