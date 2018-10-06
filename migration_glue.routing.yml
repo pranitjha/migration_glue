@@ -21,3 +21,11 @@ migration_glue.list_migration:
     _title: 'List Migration'
   requirements:
     _permission: 'administer migrations'
+
+migration_glue.edit_migration:
+  path: '/admin/config/development/edit-migrations'
+  defaults:
+    _controller: '\Drupal\migration_glue\Controller\MigrationGlueController::editMigrations'
+    _title: 'Edit Migration'
+  requirements:
+    _permission: 'administer migrations'
