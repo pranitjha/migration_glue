@@ -69,7 +69,7 @@ class EditMigrationForm extends FormBase {
       '#options' => ['' => $this->t('- Select -')] + $this->migrationGlueManager->getMigrationList(),
       '#ajax' => [
         'callback' => '::updateExport',
-        'wrapper' => 'migration-export-wrapper',
+        'wrapper' => 'migration-wrapper',
       ],
     ];
 
@@ -78,7 +78,7 @@ class EditMigrationForm extends FormBase {
       '#type' => 'textarea',
       '#rows' => 24,
       '#required' => TRUE,
-      '#prefix' => '<div id="migration-export-wrapper">',
+      '#prefix' => '<div id="migration-wrapper">',
       '#suffix' => '</div>',
     ];
 
@@ -88,7 +88,7 @@ class EditMigrationForm extends FormBase {
 
     $form['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Export'),
+      '#value' => $this->t('Update'),
     ];
 
     return $form;
