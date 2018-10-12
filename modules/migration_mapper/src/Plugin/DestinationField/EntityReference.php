@@ -16,7 +16,7 @@ use Drupal\migration_mapper\DestinationFieldBase;
  *   fieldTypes = {
  *     "entity_reference"
  *   },
- *   combinePlugin = TRUE,
+ *   combinePlugin = FALSE,
  * )
  */
 class EntityReference extends DestinationFieldBase {
