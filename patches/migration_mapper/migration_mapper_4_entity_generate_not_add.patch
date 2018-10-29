@@ -1,0 +1,13 @@
+diff --git a/modules/migration_mapper/src/Plugin/DestinationField/EntityReference.php b/modules/migration_mapper/src/Plugin/DestinationField/EntityReference.php
+index 58673a8..4eb7c42 100644
+--- a/modules/migration_mapper/src/Plugin/DestinationField/EntityReference.php
++++ b/modules/migration_mapper/src/Plugin/DestinationField/EntityReference.php
+@@ -16,7 +16,7 @@ use Drupal\migration_mapper\DestinationFieldBase;
+  *   fieldTypes = {
+  *     "entity_reference"
+  *   },
+- *   combinePlugin = TRUE,
++ *   combinePlugin = FALSE,
+  * )
+  */
+ class EntityReference extends DestinationFieldBase {
