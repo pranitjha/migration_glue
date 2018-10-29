@@ -1,0 +1,22 @@
+{
+    "name": "joshirohit100/migration_glue",
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Rohit Joshi",
+            "email": "joshi.rohit100@gmail.com"
+        },
+        {
+            "name": "Amit Goyal",
+            "email": "mintoo@gmail.com"
+        }
+
+    ],
+    "require": {
+        "drupal/migrate_source_csv": "^2.2",
+        "drupal/migrate_file": "^1.1",
+        "drupal/migrate_process_inline_images": "1.x-dev",
+        "drupal/migrate_tools": "4.0-rc1"
+    }
+}
