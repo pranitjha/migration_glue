@@ -68,4 +68,14 @@ class MigrationGlueController extends ControllerBase {
     return $migration_list;
   }
 
+  /**
+   * Renders migration edit form.
+   *
+   * @return array
+   *   Migration edit form.
+   */
+  public function editMigrations() {
+    return $this->formBuilder()->getForm('\Drupal\migration_glue\Form\EditMigrationForm');
+  }
+
 }

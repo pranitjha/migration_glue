@@ -27,7 +27,7 @@ class MigrationLookup extends FieldProcessorBase {
       '#type' => 'select',
       '#description' => $this->t('Please select migration.'),
       '#title' => $this->t('Migration'),
-      '#options' => $this->getMigrationList(),
+      '#options' => \Drupal::service('migration_glue.manager')->getMigrationList(),
     ];
 
     $form['no_stub'] = [
@@ -101,25 +101,6 @@ class MigrationLookup extends FieldProcessorBase {
         'source'      =>  $field_data['map_to'],
       ];
     }
-  }
-
-  /**
-   * Get list of migration.
-   *
-   * @return array
-   *   Migration list array.
-   */
-  protected function getMigrationList() {
-    // @TODO: Load migration instead of hardcoded.
-    $manager = \Drupal::service('plugin.manager.migration');
-    $plugins = $manager->createInstances([]);
-    $migrations = [];
-    foreach ($plugins as $migration_id => $migration) {
-      $migrations[$migration_id] = $migration->label();
-    }
-
-    // @Todo: Unset if it has current migration as well.
-    return $migrations;
   }
 
 }

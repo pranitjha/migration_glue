@@ -3,6 +3,7 @@
 namespace Drupal\migration_glue;
 
 use Drupal\Core\Cache\Cache;
+use Drupal\migrate\Plugin\MigrationPluginManager;
 use Drupal\Core\Config\ConfigFactoryInterface;
 
 class MigrationGlueManager {
@@ -15,13 +16,23 @@ class MigrationGlueManager {
   protected $configFactory;
 
   /**
+   * Migration plugin manager.
+   *
+   * @var \Drupal\migrate\Plugin\MigrationPluginManager
+   */
+  protected $migrationPluginManager;
+
+  /**
    * MigrationGlueManager constructor.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   Config factory.
+   * @param \Drupal\migrate\Plugin\MigrationPluginManager $migration_plugin_manager
+   *   Migration plugin manager.
    */
-  public function __construct(ConfigFactoryInterface $config_factory) {
+  public function __construct(ConfigFactoryInterface $config_factory, MigrationPluginManager $migration_plugin_manager) {
     $this->configFactory = $config_factory;
+    $this->migrationPluginManager = $migration_plugin_manager;
   }
 
   /**
@@ -52,6 +63,23 @@ class MigrationGlueManager {
    */
   public  function getFilesInDirectory(string $directory_path, string $file_type = 'json') {
     return glob($directory_path . '/*.' . $file_type);
+  }
+
+  /**
+   * Get list of migration.
+   *
+   * @return array
+   *   Migration list array.
+   */
+  public function getMigrationList() {
+    $plugins = $this->migrationPluginManager->createInstances([]);
+    $migrations = [];
+    foreach ($plugins as $migration_id => $migration) {
+      $migrations[$migration_id] = $migration->label();
+    }
+
+    // @Todo: Unset if it has current migration as well.
+    return $migrations;
   }
 
 }
