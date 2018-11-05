@@ -7,7 +7,7 @@
     
     `"type": "git"`
      
-* `composer require joshirohit100/migration_glue`
+* Then run `composer require joshirohit100/migration_glue`
 * `drush en -y migration_glue`
 
 
