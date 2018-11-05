@@ -3,6 +3,17 @@
     "description": "Tools to assist in developing and running migrations.",
     "type": "drupal-module",
     "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Rohit Joshi",
+            "email": "joshi.rohit100@gmail.com"
+        },
+        {
+            "name": "Amit Goyal",
+            "email": "mintoo@gmail.com"
+        }
+
+    ],
     "require": {
       "drupal/migrate_source_csv": "^2.2",
       "drupal/migrate_file": "^1.1",
