@@ -1,11 +1,11 @@
 # migration_glue
 
-##Installtion
+#Installtion
 * `composer require joshirohit100/migration_glue`
 * `drush en -y migration_glue`
 
 
-##Usage
+#Usage
 * Visit `/admin/config/development/create-migration`
 
 
