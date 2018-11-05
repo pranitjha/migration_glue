@@ -1,11 +1,17 @@
 # migration_glue
 
-#Installtion
+## Installtion
+* Add below lines in `repositories` section of your `composer.json` file in your project root
+    
+    `"url": "https://github.com/joshirohit100/migration_glue.git",`
+    
+    `"type": "git"`
+     
 * `composer require joshirohit100/migration_glue`
 * `drush en -y migration_glue`
 
 
-#Usage
+## Usage
 * Visit `/admin/config/development/create-migration`
 
 
