@@ -2,7 +2,6 @@
 
 namespace Drupal\migration_glue\Form;
 
-use Drupal\Core\Config\StorageInterface;
 use Drupal\migration_glue\MigrationGlueManager;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -22,13 +21,6 @@ class AddMigrationForm extends FormBase {
   ];
 
   /**
-   * The config storage.
-   *
-   * @var \Drupal\Core\Config\StorageInterface
-   */
-  protected $configStorage;
-
-  /**
    * Migration glue manager.
    *
    * @var \Drupal\migration_glue\MigrationGlueManager
@@ -36,15 +28,12 @@ class AddMigrationForm extends FormBase {
   protected $migrationGlueManager;
 
   /**
-   * EditMigrationForm constructor.
+   * AddMigrationForm constructor.
    *
-   * @param \Drupal\Core\Config\StorageInterface $config_storage
-   *   Config storage.
    * @param \Drupal\migration_glue\MigrationGlueManager $glue_manager
    *   Migration glue manager.
    */
-  public function __construct(StorageInterface $config_storage, MigrationGlueManager $glue_manager) {
-    $this->configStorage = $config_storage;
+  public function __construct(MigrationGlueManager $glue_manager) {
     $this->migrationGlueManager = $glue_manager;
   }
 
@@ -53,7 +42,6 @@ class AddMigrationForm extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('config.storage'),
       $container->get('migration_glue.manager')
     );
   }
@@ -76,11 +64,7 @@ class AddMigrationForm extends FormBase {
       '#required' => TRUE,
     ];
 
-    $form['actions'] = [
-      '#type' => 'actions',
-    ];
-
-    $form['actions']['submit'] = [
+    $form['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Create'),
     ];
