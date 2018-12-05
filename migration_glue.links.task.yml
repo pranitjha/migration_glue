@@ -15,6 +15,11 @@ migration_glue.list_migration:
   base_route: migration_glue.create_migration
   class: '\Drupal\migration_glue\Plugin\Menu\MigrationListTab'
 
+migration_glue.add_migration:
+  route_name: migration_glue.add_migration
+  title: 'Add Migration'
+  base_route: migration_glue.create_migration
+
 migration_glue.edit_migration:
   route_name: migration_glue.edit_migration
   title: 'Edit Migration'
