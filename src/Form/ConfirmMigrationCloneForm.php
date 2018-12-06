@@ -32,11 +32,14 @@ class ConfirmMigrationCloneForm extends ConfirmFormBase {
       $cloned_migration = $migration->createDuplicate();
       // The new machine id for the clone migration.
       $id = $this->getNewMigrationId($this->id);
+      // Change id of cloned migration.
       $cloned_migration->set('id', $id);
+      // Change the label of cloned migration.
+      $cloned_migration->set('label', $migration->label() . ' ' . $id);
       $cloned_migration->save();
       $this->messenger()->addMessage($this->t('Migration @old_migration cloned successfully with new id @new_migration.', [
-        '@old_migration' => $this->id,
-        '@new_migration' => $id,
+        '@old_migration' => $migration->label(),
+        '@new_migration' => $cloned_migration->label(),
       ]));
     }
   }
@@ -70,7 +73,7 @@ class ConfirmMigrationCloneForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getFormId() : string {
-    return "confirm_delete_form";
+    return "confirm_clone_form";
   }
 
   /**

@@ -87,10 +87,24 @@ class MigrationGlueController extends ControllerBase {
                 'migration_group' => $migration_group,
               ])->toString(),
             ],
-          ]);;
+          ]);
           $migration_list['table']['#rows'][$key]['operations']['data']['#links']['clone'] = [
             'url' => $clone_url,
             'title' => $this->t('Clone'),
+          ];
+
+          // Prepare url for edit.
+          $edit_url = Url::fromRoute('migration_glue.edit_migration', [], [
+            'query' => [
+              'destination' => Url::fromRoute('migration_glue.list_migration', [
+                'migration_group' => $migration_group,
+              ])->toString(),
+              'migration' => $key,
+            ],
+          ]);
+          $migration_list['table']['#rows'][$key]['operations']['data']['#links']['edit'] = [
+            'url' => $edit_url,
+            'title' => $this->t('Edit'),
           ];
         }
       }
