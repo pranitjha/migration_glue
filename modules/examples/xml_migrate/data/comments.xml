@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comments>
+    <comment>
+        <id>1</id>
+        <content_id>1</content_id>
+        <title>Good Article</title>
+        <content>This helps in understanding basic concepts of HTML.</content>
+        <comment_by>rohit12</comment_by>
+        <created>2016-09-03T10:20:00Z</created>
+    </comment>
+    <comment>
+        <id>2</id>
+        <content_id>1</content_id>
+        <title>Add about HTML 5</title>
+        <content>Write about HTML 5 as well.</content>
+        <comment_by>amitgoyal</comment_by>
+        <created>2016-09-20T10:20:00Z</created>
+    </comment>
+    <comment>
+        <id>3</id>
+        <content_id>2</content_id>
+        <title>Loving CSS Hacks</title>
+        <content>This really helped me, thankyou. :)</content>
+        <comment_by>gulab.bisht</comment_by>
+        <created>2016-09-23T10:20:00Z</created>
+    </comment>
+    <comment>
+        <id>4</id>
+        <content_id>3</content_id>
+        <title>Drupal is future os CMS.</title>
+        <content>It shows how powerfull Drupal is, and it looks as if Drupal is going to rule the world of PHP CMS.</content>
+        <comment_by>geetali2018</comment_by>
+        <created>2016-10-20T10:20:00Z</created>
+    </comment>
+    <comment>
+        <id>5</id>
+        <content_id>3</content_id>
+        <title>Add about Drupal 9 as well</title>
+        <content>Write about Drupal 9 as well.</content>
+        <comment_by>amitgoyal</comment_by>
+        <created>2016-12-20T10:20:00Z</created>
+    </comment>
+</comments>

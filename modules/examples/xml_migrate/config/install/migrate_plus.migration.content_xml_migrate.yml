@@ -1,0 +1,87 @@
+id: content_xml_migrate
+label: 'Content XML Migrate'
+migration_group: default
+source:
+  plugin: url
+  data_parser_plugin: xml
+  data_fetcher_plugin: file
+  urls: modules/migration_glue/modules/examples/xml_migrate/data/content.xml
+  item_selector: /pages/page
+  fields:
+    -
+      selector: /pages/page
+      label: /pages/page
+      name: /pages/page
+    -
+      selector: id
+      label: id
+      name: id
+    -
+      selector: title
+      label: title
+      name: title
+    -
+      selector: body
+      label: body
+      name: body
+    -
+      selector: image
+      label: image
+      name: image
+    -
+      selector: keywords
+      label: keywords
+      name: keywords
+    -
+      selector: author
+      label: author
+      name: author
+    -
+      selector: date_created
+      label: date_created
+      name: date_created
+  ids:
+    id:
+      type: string
+process:
+  type:
+    plugin: default_value
+    default_value: article
+  field_image:
+    plugin: image_import
+    source: image
+    destination: 'public://images/'
+    title: ''
+    alt: ''
+    height: ''
+    width: ''
+  body/value: body
+  body/format:
+    plugin: default_value
+    default_value: full_html
+  field_tags:
+    -
+      plugin: explode
+      delimiter: ','
+      source: keywords
+    -
+      plugin: migration_lookup
+      migration: tags_xml_migrate
+      no_stub: '1'
+  title: title
+  created:
+    plugin: callback
+    callable: strtotime
+    source: date_created
+  uid:
+    -
+      plugin: migration_lookup
+      migration: user_xml_migrate
+      no_stub: '1'
+      source: author
+destination:
+  plugin: 'entity:node'
+dependencies:
+  enforced:
+    module:
+      - migration_mapper
