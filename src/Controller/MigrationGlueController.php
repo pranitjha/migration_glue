@@ -62,6 +62,50 @@ class MigrationGlueController extends ControllerBase {
           $url = $row['operations']['data']['#links']['simple_form']['url'];
           $url = Url::fromRoute('migration_glue.run_migration', $url->getRouteParameters());
           $migration_list['table']['#rows'][$key]['operations']['data']['#links']['simple_form']['url'] = $url;
+
+          // Prepare url for delete.
+          $delete_url = Url::fromRoute('migration_glue.delete_migration', [
+            'id' => $key,
+          ], [
+            'query' => [
+              'destination' => Url::fromRoute('migration_glue.list_migration', [
+                'migration_group' => $migration_group,
+              ])->toString(),
+            ],
+          ]);
+          $migration_list['table']['#rows'][$key]['operations']['data']['#links']['delete'] = [
+            'url' => $delete_url,
+            'title' => $this->t('Delete'),
+          ];
+
+          // Prepare url for clone.
+          $clone_url = Url::fromRoute('migration_glue.clone_migration', [
+            'id' => $key,
+          ], [
+            'query' => [
+              'destination' => Url::fromRoute('migration_glue.list_migration', [
+                'migration_group' => $migration_group,
+              ])->toString(),
+            ],
+          ]);
+          $migration_list['table']['#rows'][$key]['operations']['data']['#links']['clone'] = [
+            'url' => $clone_url,
+            'title' => $this->t('Clone'),
+          ];
+
+          // Prepare url for edit.
+          $edit_url = Url::fromRoute('migration_glue.edit_migration', [], [
+            'query' => [
+              'destination' => Url::fromRoute('migration_glue.list_migration', [
+                'migration_group' => $migration_group,
+              ])->toString(),
+              'migration' => $key,
+            ],
+          ]);
+          $migration_list['table']['#rows'][$key]['operations']['data']['#links']['edit'] = [
+            'url' => $edit_url,
+            'title' => $this->t('Edit'),
+          ];
         }
       }
     }

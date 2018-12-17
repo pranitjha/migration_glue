@@ -37,3 +37,19 @@ migration_glue.edit_migration:
     _title: 'Edit Migration YML'
   requirements:
     _permission: 'administer migrations'
+
+migration_glue.delete_migration:
+  path: '/admin/config/development/{id}/delete-migration'
+  defaults:
+    _form: '\Drupal\migration_glue\Form\ConfirmMigrationDeleteForm'
+    _title: 'Delete Migration'
+  requirements:
+    _permission: 'administer migrations'
+
+migration_glue.clone_migration:
+  path: '/admin/config/development/{id}/clone-migration'
+  defaults:
+    _form: '\Drupal\migration_glue\Form\ConfirmMigrationCloneForm'
+    _title: 'Clone Migration'
+  requirements:
+    _permission: 'administer migrations'

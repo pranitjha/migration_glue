@@ -7,6 +7,7 @@ use Drupal\migration_glue\MigrationGlueManager;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Serialization\Yaml;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -29,16 +30,26 @@ class EditMigrationForm extends FormBase {
   protected $migrationGlueManager;
 
   /**
+   * Request stack.
+   *
+   * @var \Symfony\Component\HttpFoundation\RequestStack
+   */
+  protected $requestStack;
+
+  /**
    * EditMigrationForm constructor.
    *
    * @param \Drupal\Core\Config\StorageInterface $config_storage
    *   Config storage.
    * @param \Drupal\migration_glue\MigrationGlueManager $glue_manager
    *   Migration glue manager.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   Request stack.
    */
-  public function __construct(StorageInterface $config_storage, MigrationGlueManager $glue_manager) {
+  public function __construct(StorageInterface $config_storage, MigrationGlueManager $glue_manager, RequestStack $request_stack) {
     $this->configStorage = $config_storage;
     $this->migrationGlueManager = $glue_manager;
+    $this->requestStack = $request_stack;
   }
 
   /**
@@ -47,7 +58,8 @@ class EditMigrationForm extends FormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('config.storage'),
-      $container->get('migration_glue.manager')
+      $container->get('migration_glue.manager'),
+      $container->get('request_stack')
     );
   }
 
@@ -82,6 +94,12 @@ class EditMigrationForm extends FormBase {
       '#suffix' => '</div>',
     ];
 
+    // If migration id available in query string, then use that.
+    if (!empty($migration = $this->requestStack->getCurrentRequest()->query->get('migration'))) {
+      $form['migration']['#default_value'] = $migration;
+      $form['export']['#default_value'] = Yaml::encode($this->configStorage->read('migrate_plus.migration.' . $migration));;
+    }
+
     $form['actions'] = [
       '#type' => 'actions',
     ];
@@ -110,7 +128,7 @@ class EditMigrationForm extends FormBase {
     $value = $form_state->getValue('export');
     $yml_data = Yaml::decode($value);
     $this->migrationGlueManager->registerMigration($yml_data);
-    drupal_set_message($this->t('Migration is updated successfully'));
+    $this->messenger()->addMessage($this->t('Migration is updated successfully.'));
   }
 
 }
