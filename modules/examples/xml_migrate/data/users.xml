@@ -5,6 +5,8 @@
     <id>1</id>
     <email>pranit@gmail.com</email>
     <username>pranit</username>
+    <password>21232F297A57A5A743894A0E4A801FC3</password>
+    <roles>admin,normal</roles>
     <fullname>Pranit Jha</fullname>
     <created>09/11/18</created>
     <updated>12/11/18</updated>
@@ -16,6 +18,8 @@
     <id>2</id>
     <email>rohit12@gmail.com</email>
     <username>rohit12</username>
+    <password></password>
+    <roles>normal</roles>
     <fullname>Rohit Joshi</fullname>
     <created>09/12/18</created>
     <updated>12/12/18</updated>
@@ -27,6 +31,8 @@
     <id>3</id>
     <email>amitgoyal@gmail.com</email>
     <username>amitgoyal</username>
+    <password></password>
+    <roles>admin,normal</roles>
     <fullname>Amit Goyal</fullname>
     <created>10/11/18</created>
     <updated>11/11/18</updated>
@@ -38,6 +44,8 @@
     <id>4</id>
     <email>gulab@gmail.com</email>
     <username>gulab.bisht</username>
+    <password>21232F297A57A5A743894A0E4A801FC3</password>
+    <roles>normal</roles>
     <fullname>Gulab Bisht</fullname>
     <created>10/12/18</created>
     <updated>12/12/18</updated>
@@ -49,10 +57,12 @@
     <id>5</id>
     <email>geetali@gmail.com</email>
     <username>geetali2018</username>
+    <password></password>
+    <roles>normal</roles>
     <fullname>Geetali</fullname>
     <created>09/11/18</created>
     <updated>12/11/18</updated>
-    <status>1</status>
+    <status>0</status>
     <picture>http://simpleicon.com/wp-content/uploads/female-user.png</picture>
     <language>en</language>
   </user>

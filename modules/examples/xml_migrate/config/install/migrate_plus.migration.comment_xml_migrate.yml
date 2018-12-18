@@ -55,12 +55,13 @@ process:
     migration: content_xml_migrate
     no_stub: '0'
     source: content_id
-  field_name: title
+  field_name:
+    plugin: default_value
+    default_value: comment
   created:
     plugin: callback
     callable: strtotime
     source: created
-  name: title
   uid:
     plugin: migration_lookup
     migration: user_xml_migrate

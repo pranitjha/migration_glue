@@ -25,6 +25,14 @@ source:
       label: username
       name: username
     -
+      selector: password
+      label: password
+      name: password
+    -
+      selector: roles
+      label: roles
+      name: roles
+    -
       selector: fullname
       label: fullname
       name: fullname
@@ -61,6 +69,21 @@ process:
     height: ''
     width: ''
   name: username
+  pass:
+    plugin: skip_on_empty
+    method: process
+    source: password
+  roles:
+    -
+      plugin: explode
+      source: roles
+      limit: 100
+      delimiter: ','
+    -
+      plugin: static_map
+      map:
+        admin: administrator
+        normal: authenticated
   created:
     plugin: callback
     callable: strtotime

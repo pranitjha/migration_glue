@@ -10,6 +10,7 @@
         <keywords>HTML</keywords>
         <author>pranit</author>
         <date_created>2016-08-30T10:20:00Z</date_created>
+        <status>1</status>
     </page>
     <page>
         <id>2</id>
@@ -25,6 +26,7 @@
         <keywords>CSS</keywords>
         <author>pranit</author>
         <date_created>2016-09-10T11:15:00Z</date_created>
+        <status>1</status>
     </page>
     <page>
         <id>3</id>
@@ -42,5 +44,6 @@
         <keywords>Drupal,CMS</keywords>
         <author>rohit12</author>
         <date_created>2016-09-15T10:00:00Z</date_created>
+        <status>0</status>
     </page>
 </pages>

@@ -40,6 +40,10 @@ source:
       selector: date_created
       label: date_created
       name: date_created
+    -
+      selector: status
+      label: status
+      name: status
   ids:
     id:
       type: string
@@ -74,11 +78,11 @@ process:
     callable: strtotime
     source: date_created
   uid:
-    -
-      plugin: migration_lookup
-      migration: user_xml_migrate
-      no_stub: '1'
-      source: author
+    plugin: migration_lookup
+    migration: user_xml_migrate
+    no_stub: '1'
+    source: author
+  status: status
 destination:
   plugin: 'entity:node'
 dependencies:
