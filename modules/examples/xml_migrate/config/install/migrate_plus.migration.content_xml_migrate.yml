@@ -37,6 +37,10 @@ source:
       label: author
       name: author
     -
+      selector: path
+      label: path
+      name: path
+    -
       selector: date_created
       label: date_created
       name: date_created
@@ -59,7 +63,9 @@ process:
     alt: ''
     height: ''
     width: ''
-  body/value: body
+  body/value:
+    plugin: inline_images
+    source: body
   body/format:
     plugin: default_value
     default_value: full_html
@@ -73,10 +79,15 @@ process:
       migration: tags_xml_migrate
       no_stub: '1'
   title: title
+  path: path
   created:
     plugin: callback
     callable: strtotime
     source: date_created
+  changed:
+    plugin: callback
+    callable: strtotime
+    source: date_updated
   uid:
     plugin: migration_lookup
     migration: user_xml_migrate

@@ -3,13 +3,16 @@
     <page>
         <id>1</id>
         <title>Usage of HTML</title>
-        <body>Hypertext Markup Language (HTML) is the standard markup language for creating web pages and web applications.
+        <body>Hypertext Markup Language &lt;strong&gt;(HTML)&lt;/strong&gt; is the standard markup language for creating web pages and web applications.
             With Cascading Style Sheets (CSS) and JavaScript, it forms a triad of cornerstone technologies for the World Wide Web.
+            &lt;img src="https://cdn.lynda.com/course/439683/439683-636441077028502313-16x9.jpg" alt="test" /&gt;
         </body>
         <image>https://static.makeuseof.com/wp-content/uploads/2017/09/HTML-Effects-Featured-670x335.jpg</image>
         <keywords>HTML</keywords>
         <author>pranit</author>
+        <path>/usage-of-html</path>
         <date_created>2016-08-30T10:20:00Z</date_created>
+        <date_updated>2016-08-30T10:20:00Z</date_updated>
         <status>1</status>
     </page>
     <page>
@@ -25,7 +28,9 @@
         <image>https://cdn.lynda.com/course/439683/439683-636441077028502313-16x9.jpg</image>
         <keywords>CSS</keywords>
         <author>pranit</author>
+        <path>/css-hacks</path>
         <date_created>2016-09-10T11:15:00Z</date_created>
+        <date_updated>2017-08-30T10:20:00Z</date_updated>
         <status>1</status>
     </page>
     <page>
@@ -43,7 +48,9 @@
         <image>https://www.weebpal.com/sites/default/files/blog/learn%20Drupal%20for%20beginners_new.jpg</image>
         <keywords>Drupal,CMS</keywords>
         <author>rohit12</author>
+        <path>/drupal-cms</path>
         <date_created>2016-09-15T10:00:00Z</date_created>
+        <date_updated>2018-08-30T10:20:00Z</date_updated>
         <status>0</status>
     </page>
 </pages>
