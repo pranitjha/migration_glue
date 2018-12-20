@@ -33,6 +33,10 @@ source:
       label: comment_by
       name: comment_by
     -
+      selector: reply_to
+      label: reply_to
+      name: reply_to
+    -
       selector: created
       label: created
       name: created
@@ -58,6 +62,15 @@ process:
   field_name:
     plugin: default_value
     default_value: comment
+  pid:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: reply_to
+    -
+      plugin: migration_lookup
+      migration: comment_xml_migrate
+      no_stub: '0'
   created:
     plugin: callback
     callable: strtotime
