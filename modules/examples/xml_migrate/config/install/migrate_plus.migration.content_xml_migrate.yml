@@ -88,4 +88,4 @@ destination:
 dependencies:
   enforced:
     module:
-      - migration_mapper
+      - xml_migrate
