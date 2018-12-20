@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0">
+  <user>
+    <id>1</id>
+    <email>pranit@gmail.com</email>
+    <username>pranit</username>
+    <password>21232F297A57A5A743894A0E4A801FC3</password>
+    <roles>admin,normal</roles>
+    <fullname>Pranit Jha</fullname>
+    <created>09/11/18</created>
+    <updated>12/11/18</updated>
+    <status>1</status>
+    <picture>https://images-na.ssl-images-amazon.com/images/I/61PCWfClLNL._SX425_.jpg</picture>
+    <language>en</language>
+  </user>
+  <user>
+    <id>2</id>
+    <email>rohit12@gmail.com</email>
+    <username>rohit12</username>
+    <password></password>
+    <roles>normal</roles>
+    <fullname>Rohit Joshi</fullname>
+    <created>09/12/18</created>
+    <updated>12/12/18</updated>
+    <status>1</status>
+    <picture>https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png</picture>
+    <language>en</language>
+  </user>
+  <user>
+    <id>3</id>
+    <email>amitgoyal@gmail.com</email>
+    <username>amitgoyal</username>
+    <password></password>
+    <roles>admin,normal</roles>
+    <fullname>Amit Goyal</fullname>
+    <created>10/11/18</created>
+    <updated>11/11/18</updated>
+    <status>1</status>
+    <picture>http://icons.iconarchive.com/icons/icons8/ios7/256/Users-User-Male-icon.png</picture>
+    <language>en</language>
+  </user>
+  <user>
+    <id>4</id>
+    <email>gulab@gmail.com</email>
+    <username>gulab.bisht</username>
+    <password>21232F297A57A5A743894A0E4A801FC3</password>
+    <roles>normal</roles>
+    <fullname>Gulab Bisht</fullname>
+    <created>10/12/18</created>
+    <updated>12/12/18</updated>
+    <status>1</status>
+    <picture>https://image.shutterstock.com/image-vector/user-icon-vector-male-person-260nw-267256895.jpg</picture>
+    <language>en</language>
+  </user>
+  <user>
+    <id>5</id>
+    <email>geetali@gmail.com</email>
+    <username>geetali2018</username>
+    <password></password>
+    <roles>normal</roles>
+    <fullname>Geetali</fullname>
+    <created>09/11/18</created>
+    <updated>12/11/18</updated>
+    <status>0</status>
+    <picture>http://simpleicon.com/wp-content/uploads/female-user.png</picture>
+    <language>en</language>
+  </user>
+</document>

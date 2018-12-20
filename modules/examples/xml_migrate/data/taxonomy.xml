@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0">
+ <tags>
+  <term>
+   <term_id>1</term_id>
+   <term_name>PHP</term_name>
+   <term_desc>PHP is a web development language.</term_desc>
+  </term>
+  <term>
+   <term_id>2</term_id>
+   <term_name>HTML</term_name>
+   <term_desc>HTML is a markup language.</term_desc>
+  </term>
+  <term>
+   <term_id>3</term_id>
+   <term_name>CSS</term_name>
+   <term_desc>CSS is used with HTML to beautify it.</term_desc>
+  </term>
+  <term>
+   <term_id>4</term_id>
+   <term_name>JS</term_name>
+   <term_desc>JS is a client side language.</term_desc>
+  </term>
+  <term>
+   <term_id>5</term_id>
+   <term_name>Drupal</term_name>
+   <term_desc>Drupal is a CMS built in PHP.</term_desc>
+  </term>
+  <term>
+   <term_id>6</term_id>
+   <term_name>CMS</term_name>
+   <term_desc>CMS stands for Content Management System.</term_desc>
+  </term>
+  <term>
+   <term_id>7</term_id>
+   <term_name>jQuery</term_name>
+   <term_desc>jQuery is a JS library.</term_desc>
+  </term>
+ </tags>
+</document>
