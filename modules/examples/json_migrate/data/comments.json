@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "id": "1",
+      "content_id": "1",
+      "title": "Good article on HTML 5",
+      "content": "Awesome explanation of HTML 5.",
+      "comment_by": "rosy.bisht",
+      "reply_to": "",
+      "created": "2016-09-03T10:20:00Z"
+    },
+    {
+      "id": "2",
+      "content_id": "1",
+      "title": "Add about CSS AND JS",
+      "content": "Write about CSS and JS as well.",
+      "comment_by": "meetali2018",
+      "reply_to": "1",
+      "created": "2016-09-20T10:20:00Z"
+    },
+    {
+      "id": "3",
+      "content_id": "1",
+      "title": "Loving CSS 3 concepts",
+      "content": "This really helped me, thankyou. :)",
+      "comment_by": "pravin.jha",
+      "reply_to": "2",
+      "created": "2016-09-23T10:20:00Z"
+    },
+    {
+      "id": "4",
+      "content_id": "3",
+      "title": "Drupal 9 - When we can have this.",
+      "content": "Really excited to work on Drupal 9, When we can have this available.",
+      "comment_by": "mohit18",
+      "reply_to": "",
+      "created": "2016-10-20T10:20:00Z"
+    },
+    {
+      "id": "5",
+      "content_id": "3",
+      "title": "Too early to comment about Drupal 9",
+      "content": "Drupal 9 is not yet available, so its too early to say anything about it, lets wait ans watch.",
+      "comment_by": "rosy.bisht",
+      "reply_to": "",
+      "created": "2016-12-20T10:20:00Z"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "tags": [
+    {
+      "term_id": "1",
+      "term_name": "PHP 7",
+      "term_desc": "PHP 7 is a web development language."
+    },
+    {
+      "term_id": "2",
+      "term_name": "HTML 5",
+      "term_desc": "HTML 5 is a markup language."
+    },
+    {
+      "term_id": "3",
+      "term_name": "CSS 3",
+      "term_desc": "CSS 3 is used with HTML to beautify it."
+    },
+    {
+      "term_id": "4",
+      "term_name": "JS Framework",
+      "term_desc": "JS Framework is a client side language."
+    },
+    {
+      "term_id": "5",
+      "term_name": "Drupal 9",
+      "term_desc": "Drupal 9 is a CMS built in PHP."
+    },
+    {
+      "term_id": "7",
+      "term_name": "Angular",
+      "term_desc": "Angular is a JS library."
+    }
+  ]
+}

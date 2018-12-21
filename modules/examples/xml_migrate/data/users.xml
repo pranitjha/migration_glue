@@ -5,7 +5,7 @@
     <id>1</id>
     <email>pranit@gmail.com</email>
     <username>pranit</username>
-    <password>21232F297A57A5A743894A0E4A801FC3</password>
+    <password>21232f297a57a5a743894a0e4a801fc3</password>
     <roles>admin,normal</roles>
     <fullname>Pranit Jha</fullname>
     <created>09/11/18</created>
@@ -44,7 +44,7 @@
     <id>4</id>
     <email>gulab@gmail.com</email>
     <username>gulab.bisht</username>
-    <password>21232F297A57A5A743894A0E4A801FC3</password>
+    <password>21232f297a57a5a743894a0e4a801fc3</password>
     <roles>normal</roles>
     <fullname>Gulab Bisht</fullname>
     <created>10/12/18</created>

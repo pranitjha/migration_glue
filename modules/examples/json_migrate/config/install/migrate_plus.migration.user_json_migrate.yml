@@ -1,17 +1,17 @@
-id: user_xml_migrate
-label: 'User XML Migrate'
+id: user_json_migrate
+label: 'User JSON Migrate'
 migration_group: default
 source:
   plugin: url
-  data_parser_plugin: xml
+  data_parser_plugin: json
   data_fetcher_plugin: file
-  urls: modules/migration_glue/modules/examples/xml_migrate/data/users.xml
-  item_selector: /document/user
+  urls: modules/migration_glue/modules/examples/json_migrate/data/users.json
+  item_selector: /user
   fields:
     -
-      selector: /document/user
-      label: /document/user
-      name: /document/user
+      selector: /user
+      label: /user
+      name: /user
     -
       selector: id
       label: id
@@ -101,4 +101,4 @@ destination:
 dependencies:
   enforced:
     module:
-      - xml_migrate
+      - json_migrate
