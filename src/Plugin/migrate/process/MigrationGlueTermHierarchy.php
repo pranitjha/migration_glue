@@ -128,10 +128,10 @@ class MigrationGlueTermHierarchy extends ProcessPluginBase implements ContainerF
   protected function findTerm(string $termName, $parentTID = 0) {
     $query = $this->database->select('taxonomy_term_field_data', 'ttfd')
       ->fields('ttfd', ['tid']);
-    $query->innerJoin('taxonomy_term_hierarchy', 'tth', 'ttfd.tid = tth.tid');
+    $query->innerJoin('taxonomy_term__parent', 'tth', 'ttfd.tid = tth.entity_id');
     $query->condition('ttfd.vid', $this->configuration['bundle']);
     $query->condition('ttfd.name', $termName);
-    $query->condition('tth.parent', $parentTID);
+    $query->condition('tth.parent_target_id', $parentTID);
     return $query->execute()->fetchField();
   }
 
