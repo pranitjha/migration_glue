@@ -8,7 +8,7 @@ use Drupal\migrate\Row;
  * Source plugin for the users.
  *
  * @MigrateSource(
- *   id = "mysql_users",
+ *   id = "mg_sample_sql_users",
  * )
  */
 class Users extends SqlBase {
@@ -52,13 +52,5 @@ class Users extends SqlBase {
     ];
 
     return $fields;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function prepareRow(Row $row) {
-    // Perform extra pre-processing for keywords terms, if needed.
-    return parent::prepareRow($row);
   }
 }

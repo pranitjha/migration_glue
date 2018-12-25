@@ -8,7 +8,7 @@ use Drupal\migrate\Row;
  * Source plugin for the content.
  *
  * @MigrateSource(
- *   id = "content"
+ *   id = "mg_sample_sql_content"
  * )
  */
 class Content extends SqlBase {
@@ -51,13 +51,5 @@ class Content extends SqlBase {
     ];
 
     return $fields;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function prepareRow(Row $row) {
-    // Perform extra pre-processing for keywords terms, if needed.
-    return parent::prepareRow($row);
   }
 }

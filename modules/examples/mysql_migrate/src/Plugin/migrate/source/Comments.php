@@ -8,7 +8,7 @@ use Drupal\migrate\Row;
  * Source plugin for the comments.
  *
  * @MigrateSource(
- *   id = "comments"
+ *   id = "mg_sample_sql_comment"
  * )
  */
 class Comments extends SqlBase {
@@ -49,13 +49,5 @@ class Comments extends SqlBase {
     ];
 
     return $fields;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function prepareRow(Row $row) {
-    // Perform extra pre-processing for keywords terms, if needed.
-    return parent::prepareRow($row);
   }
 }

@@ -8,7 +8,7 @@ use Drupal\migrate\Row;
  * Source plugin for the content.
  *
  * @MigrateSource(
- *   id = "taxonomy"
+ *   id = "mg_sample_sql_taxonomy"
  * )
  */
 class Taxonomy extends SqlBase {
@@ -45,13 +45,5 @@ class Taxonomy extends SqlBase {
     ];
 
     return $fields;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function prepareRow(Row $row) {
-    // Perform extra pre-processing for keywords terms, if needed.
-    return parent::prepareRow($row);
   }
 }
