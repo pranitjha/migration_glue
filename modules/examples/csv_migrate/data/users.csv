@@ -1,0 +1,3 @@
+id,email,username,password,roles,status,picture,language
+1,user1@example.com,user1,21232F297A57A5A743894A0E4A801FC3,administrator,1,https://images-na.ssl-images-amazon.com/images/I/61PCWfClLNL._SX425_.jpg,en
+2,user2@example.com,user2,21232F297A57A5A743894A0E4A801FC3,administrator,1,https://images-na.ssl-images-amazon.com/images/I/61PCWfClLNL._SX425_.jpg,en
