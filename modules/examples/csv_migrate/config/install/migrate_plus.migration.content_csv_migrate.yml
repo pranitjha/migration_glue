@@ -47,4 +47,4 @@ destination:
 dependencies:
   enforced:
     module:
-    - migration_mapper
+    - csv_migrate
