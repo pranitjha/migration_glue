@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: migration_example_paragraph
+label: 'Migration Example Paragraph'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }
