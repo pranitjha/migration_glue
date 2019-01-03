@@ -5,7 +5,7 @@ source:
   plugin: url
   data_parser_plugin: json
   data_fetcher_plugin: file
-  urls: modules/migration_glue/modules/examples/json_migrate/data/content.json
+  urls: modules/contrib/migration_glue/modules/examples/json_migrate/data/content.json
   item_selector: /blogs
   fields:
     -
