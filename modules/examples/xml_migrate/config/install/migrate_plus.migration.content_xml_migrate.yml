@@ -48,6 +48,30 @@ source:
       selector: status
       label: status
       name: status
+    -
+      selector: sample_title1
+      label: sample_title1
+      name: sample_title1
+    -
+      selector: sample_title2
+      label: sample_title2
+      name: sample_title2
+    -
+      selector: sample_body1
+      label: sample_body1
+      name: sample_body1
+    -
+      selector: sample_body2
+      label: sample_body2
+      name: sample_body2
+    -
+      selector: sample_term
+      label: sample_term
+      name: sample_term
+    -
+      selector: sample_date
+      label: sample_date
+      name: sample_date
   ids:
     id:
       type: string
@@ -94,6 +118,41 @@ process:
     no_stub: '1'
     source: author
   status: status
+
+  sample_term:
+    plugin: migration_glue_term_hierarchy
+    source: sample_term
+    separator: '/'
+    bundle: tags
+  sample_body1:
+    plugin: html_tag_str_replace
+    html_tag: "p"
+    attribute_name: "class"
+    attribute_value: "test"
+    replace: "This is replacement string."
+    source: sample_body1
+  sample_body2:
+    plugin: str_replace_pattern
+    pattern: "This article was first published in (.*). Some facts may have aged gracelessly."
+    replace: "This article was first published in 2019. Some facts may have aged gracelessly."
+    source: sample_body2
+  sample_date:
+    plugin: convert_date_timezone
+    source_timezone: "America/New_York"
+    source: sample_date
+  sample_fallback:
+    -
+      plugin: get
+      source:
+        - sample_title1
+        - sample_title2
+    -
+      plugin: callback
+      callable: array_filter
+    -
+      plugin: callback
+      callable: reset
+
 destination:
   plugin: 'entity:node'
 dependencies:
