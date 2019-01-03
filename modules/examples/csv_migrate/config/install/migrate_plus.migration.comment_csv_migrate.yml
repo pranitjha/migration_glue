@@ -3,7 +3,7 @@ label: 'Comment CSV Migrate'
 migration_group: default
 source:
   plugin: csv
-  path: modules/custom/migration_glue/modules/examples/csv_migrate/data/comments.csv
+  path: modules/contrib/migration_glue/modules/examples/csv_migrate/data/comments.csv
   track_changes: true
   delimiter: ','
   enclosure: ''

@@ -3,7 +3,7 @@ label: 'Content CSV Migrate'
 migration_group: default
 source:
   plugin: csv
-  path: modules/custom/migration_glue/modules/examples/csv_migrate/data/content.csv
+  path: modules/contrib/migration_glue/modules/examples/csv_migrate/data/content.csv
   track_changes: true
   delimiter: ','
   enclosure: ''

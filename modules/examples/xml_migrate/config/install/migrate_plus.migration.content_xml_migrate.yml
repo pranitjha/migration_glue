@@ -5,7 +5,7 @@ source:
   plugin: url
   data_parser_plugin: xml
   data_fetcher_plugin: file
-  urls: modules/migration_glue/modules/examples/xml_migrate/data/content.xml
+  urls: modules/contrib/migration_glue/modules/examples/xml_migrate/data/content.xml
   item_selector: /pages/page
   fields:
     -
