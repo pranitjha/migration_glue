@@ -76,6 +76,10 @@ source:
       selector: sample_url
       label: sample_url
       name: sample_url
+    -
+      selector: sample_list
+      label: sample_list
+      name: sample_list
   ids:
     id:
       type: string
@@ -146,7 +150,15 @@ process:
     source: sample_date
   sample_url:
     plugin: url_to_alias
-    saource: sample_url
+    source: sample_url
+  sample_list:
+    -
+      plugin: list_explode
+      source: sample_list
+    -
+      plugin: iterator
+      process:
+        value: value
   sample_fallback:
     -
       plugin: get
