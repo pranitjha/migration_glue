@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+  - field.storage.paragraph.field_example_body
+  - paragraphs.paragraphs_type.migration_example_paragraph
+  module:
+  - text
+id: paragraph.migration_example_paragraph.field_example_body
+field_name: field_example_body
+entity_type: paragraph
+bundle: migration_example_paragraph
+label: 'Example Body'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

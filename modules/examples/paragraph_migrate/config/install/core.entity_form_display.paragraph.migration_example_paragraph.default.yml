@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+  - field.field.paragraph.migration_example_paragraph.field_example_body
+  - paragraphs.paragraphs_type.migration_example_paragraph
+  module:
+  - text
+id: paragraph.migration_example_paragraph.default
+targetEntityType: paragraph
+bundle: migration_example_paragraph
+mode: default
+content:
+  field_example_body:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
