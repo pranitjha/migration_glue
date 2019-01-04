@@ -148,6 +148,21 @@ process:
     plugin: convert_date_timezone
     source_timezone: "America/New_York"
     source: sample_date
+  sample_body1:
+    -
+      plugin: mg_callback_plus
+      source: sample_body1
+      parameters:
+        - '/'
+      callback: ltrim
+      sub_pos: first
+    -
+      plugin: mg_callback_plus
+      parameters:
+        - '<h2'
+        - '<h3'
+      callback: str_ireplace
+      sub_pos: last
   sample_url:
     plugin: url_to_alias
     source: sample_url

@@ -18,7 +18,7 @@
         <sample_title2></sample_title2>
         <sample_date>2011-08-12T20:17:46</sample_date>
         <sample_term>Term1/Term11/Term111</sample_term>
-        <sample_body1>&lt;p class="test"&gt;This is Test&lt;/p&gt; Data 1 &lt;p&gt;This is another.&lt;/p&gt;</sample_body1>
+        <sample_body1>/&lt;p class="test"&gt;This is Test&lt;/p&gt; Data 1 &lt;p&gt;This is another.&lt;/p&gt;&lt;h2&gt;This is h2&lt;/h2&gt;</sample_body1>
         <sample_body2>This article was first published in 2014. Some facts may have aged gracelessly.</sample_body2>
         <sample_url>http://www.example.com/example1</sample_url>
         <sample_list>&lt;ul&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;li&gt;Item 11&lt;/li&gt;&lt;/ul&gt;</sample_list>
@@ -45,7 +45,7 @@
         <sample_title2>This is sample title 22</sample_title2>
         <sample_date>2011-09-12T20:17:46</sample_date>
         <sample_term>Term2/Term22/Term222</sample_term>
-        <sample_body1>&lt;p class="test"&gt;This is Test&lt;/p&gt; Data 2 &lt;p&gt;This is another.&lt;/p&gt;</sample_body1>
+        <sample_body1>/&lt;p class="test"&gt;This is Test&lt;/p&gt; Data 2 &lt;p&gt;This is another.&lt;/p&gt;&lt;h2&gt;This is h2&lt;/h2&gt;</sample_body1>
         <sample_body2>This article was first published in 2015. Some facts may have aged gracelessly.</sample_body2>
         <sample_url>http://www.example.com/example2</sample_url>
         <sample_list>&lt;ul&gt;&lt;li&gt;Item 2&lt;/li&gt;&lt;li&gt;Item 22&lt;/li&gt;&lt;/ul&gt;</sample_list>
@@ -73,7 +73,7 @@
         <sample_title2>This is sample title 33</sample_title2>
         <sample_date>2011-07-12T20:17:46</sample_date>
         <sample_term>Term3/Term33/Term333</sample_term>
-        <sample_body1>&lt;p class="test"&gt;This is Test&lt;/p&gt; Data 3 &lt;p&gt;This is another.&lt;/p&gt;</sample_body1>
+        <sample_body1>/&lt;p class="test"&gt;This is Test&lt;/p&gt; Data 3 &lt;p&gt;This is another.&lt;/p&gt;&lt;h2&gt;This is h2&lt;/h2&gt;</sample_body1>
         <sample_body2>This article was first published in 2016. Some facts may have aged gracelessly.</sample_body2>
         <sample_url>http://www.example.com/examples/example3</sample_url>
         <sample_list>&lt;ul&gt;&lt;li&gt;Item 3&lt;/li&gt;&lt;li&gt;Item 33&lt;/li&gt;&lt;/ul&gt;</sample_list>
