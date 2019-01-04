@@ -20,6 +20,7 @@
         <sample_term>Term1/Term11/Term111</sample_term>
         <sample_body1>&lt;p class="test"&gt;This is Test&lt;/p&gt; Data 1 &lt;p&gt;This is another.&lt;/p&gt;</sample_body1>
         <sample_body2>This article was first published in 2014. Some facts may have aged gracelessly.</sample_body2>
+        <sample_url>http://www.example.com/example1</sample_url>
 
     </page>
     <page>
@@ -45,6 +46,7 @@
         <sample_term>Term2/Term22/Term222</sample_term>
         <sample_body1>&lt;p class="test"&gt;This is Test&lt;/p&gt; Data 2 &lt;p&gt;This is another.&lt;/p&gt;</sample_body1>
         <sample_body2>This article was first published in 2015. Some facts may have aged gracelessly.</sample_body2>
+        <sample_url>http://www.example.com/example2</sample_url>
     </page>
     <page>
         <id>3</id>
@@ -71,5 +73,6 @@
         <sample_term>Term3/Term33/Term333</sample_term>
         <sample_body1>&lt;p class="test"&gt;This is Test&lt;/p&gt; Data 3 &lt;p&gt;This is another.&lt;/p&gt;</sample_body1>
         <sample_body2>This article was first published in 2016. Some facts may have aged gracelessly.</sample_body2>
+        <sample_url>http://www.example.com/examples/example3</sample_url>
     </page>
 </pages>
