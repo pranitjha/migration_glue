@@ -72,6 +72,10 @@ source:
       selector: sample_date
       label: sample_date
       name: sample_date
+    -
+      selector: sample_url
+      label: sample_url
+      name: sample_url
   ids:
     id:
       type: string
@@ -140,6 +144,9 @@ process:
     plugin: convert_date_timezone
     source_timezone: "America/New_York"
     source: sample_date
+  sample_url:
+    plugin: url_to_alias
+    saource: sample_url
   sample_fallback:
     -
       plugin: get
