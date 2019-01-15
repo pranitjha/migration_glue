@@ -71,7 +71,21 @@ function migration_glue_form_alter(array &$form, FormStateInterface $form_state,
         'class' => ['button']
       ]
     ];
+    $form['#submit'][] = '_migration_glue_migration_execute_submit_handler';
   }
+}
+
+/**
+ * Custom submit handler for migration execution form.
+ */
+function _migration_glue_migration_execute_submit_handler(array &$form, FormStateInterface $form_state) {
+  \Drupal::messenger()->addStatus(t('Migration operation:@operation executed successfully.', [
+    '@operation' => $form_state->getValue('operation'),
+  ]));
+  // Redirect to next step.
+  $form_state->setRedirect('migration_glue.list_migration', [
+    'migration_group' => 'default',
+  ]);
 }
 
 /**
