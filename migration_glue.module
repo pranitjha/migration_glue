@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -47,6 +48,15 @@ function migration_glue_form_alter(array &$form, FormStateInterface $form_state,
       '#value' => t('Go to next step'),
       '#validate' => ['_migration_glue_validate_handler'],
       '#submit' => ['_migration_glue_submit_handler'],
+    ];
+
+    $form['actions']['back_link'] = [
+      '#title' => t('Go Back'),
+      '#type' => 'link',
+      '#url' => Url::fromRoute('migration_glue.list_migration', ['migration_group' => 'default']),
+      '#attributes' => [
+        'class' => ['button']
+      ]
     ];
   }
 }

@@ -6,6 +6,7 @@ use Drupal\migration_glue\MigrationGlueManager;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Serialization\Yaml;
+use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -69,6 +70,15 @@ class AddMigrationForm extends FormBase {
       '#value' => $this->t('Create'),
     ];
 
+    $form['back_link'] = [
+      '#title' => $this->t('Go Back'),
+      '#type' => 'link',
+      '#url' => Url::fromRoute('migration_glue.list_migration', ['migration_group' => 'default']),
+      '#attributes' => [
+        'class' => ['button']
+      ]
+    ];
+
     return $form;
   }
 
@@ -78,6 +88,10 @@ class AddMigrationForm extends FormBase {
   public function validateForm(array &$form, FormStateInterface $form_state) {
     $value = $form_state->getValue('migration');
     $yml_data = Yaml::decode($value);
+
+    if (!is_array($yml_data)) {
+      $form_state->setErrorByName('migration', $this->t('Invalid migration YAML.'));
+    }
 
     if ($yml_data) {
       $contains_all_required_keys = !array_diff(self::REQUIRED_MIGRATION_KEYS, array_keys($yml_data));
