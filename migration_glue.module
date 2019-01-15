@@ -45,7 +45,7 @@ function migration_glue_form_alter(array &$form, FormStateInterface $form_state,
     // Adding a submit button.
     $form['next_step'] = [
       '#type' => 'submit',
-      '#value' => t('Go to next step'),
+      '#value' => t('Save migration'),
       '#validate' => ['_migration_glue_validate_handler'],
       '#submit' => ['_migration_glue_submit_handler'],
     ];
@@ -119,15 +119,19 @@ function _migration_glue_submit_handler(array &$form, FormStateInterface $form_s
   // Parsed yml to array.
   $parsed_yml = Yaml::parse($output);
 
-  // Register the migration in system.
-  \Drupal::service('migration_glue.manager')->registerMigration($parsed_yml);
+  if (is_array($parsed_yml) && !empty($parsed_yml)) {
+    // Register the migration in system.
+    \Drupal::service('migration_glue.manager')->registerMigration($parsed_yml);
 
-  // Adding status message.
-  \Drupal::messenger()->addStatus(t('Migration @migration has been created successfully.', ['@migration' => $parsed_yml['id']]));
+    // Adding status message.
+    \Drupal::messenger()->addStatus(t('Migration @migration has been created successfully.', ['@migration' => $parsed_yml['id']]));
+  }
+  else {
+    \Drupal::messenger()->addError(t('You just saved form without creating migration.'));
+  }
 
   // Redirect to next step.
-  $form_state->setRedirect('migration_glue.run_migration', [
-    'migration' => $parsed_yml['id'],
-    'migration_group' => $parsed_yml['migration_group'],
+  $form_state->setRedirect('migration_glue.list_migration', [
+    'migration_group' => 'default',
   ]);
 }
