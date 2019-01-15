@@ -1,6 +1,6 @@
 migration_glue.add_migration:
   route_name: migration_glue.add_migration
-  title: 'Add migration via YAML'
+  title: 'Create migration from YAML'
   appears_on:
     - migration_glue.list_migration
 
