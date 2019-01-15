@@ -120,6 +120,7 @@ class AddMigrationForm extends FormBase {
     $yml_data = Yaml::decode($form_state->getValue('migration'));
     $this->migrationGlueManager->registerMigration($yml_data);
     $this->messenger()->addMessage($this->t('Migration is created successfully.'));
+    $form_state->setRedirect('migration_glue.list_migration', ['migration_group' => 'default']);
   }
 
 }
