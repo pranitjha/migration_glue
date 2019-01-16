@@ -1,11 +1,11 @@
-migration_glue.add_migration:
-  route_name: migration_glue.add_migration
-  title: 'Create migration from YAML'
+migration_glue.create_migration:
+  route_name: migration_glue.create_migration
+  title: 'Create Migration - UI'
   appears_on:
     - migration_glue.list_migration
 
-migration_glue.create_migration:
-  route_name: migration_glue.create_migration
-  title: 'Create migration from Source'
+migration_glue.add_migration:
+  route_name: migration_glue.add_migration
+  title: 'Create Migration - YAML'
   appears_on:
     - migration_glue.list_migration

@@ -2,7 +2,7 @@ migration_glue.create_migration:
   path: '/admin/config/development/create-migration'
   defaults:
     _controller: '\Drupal\migration_glue\Controller\MigrationGlueController::createMigration'
-    _title: 'Create Migration'
+    _title: 'Create Migration - UI'
   requirements:
     _permission: 'administer migrations'
 
@@ -10,7 +10,7 @@ migration_glue.run_migration:
   path: '/admin/config/development/{migration_group}/{migration}/run-migration'
   defaults:
     _controller: '\Drupal\migration_glue\Controller\MigrationGlueController::runMigration'
-    _title: 'Run Migration'
+    _title: 'Execute Migration'
   requirements:
     _permission: 'administer migrations'
 
@@ -26,7 +26,7 @@ migration_glue.add_migration:
   path: '/admin/config/development/add-migration'
   defaults:
     _controller: '\Drupal\migration_glue\Controller\MigrationGlueController::addMigration'
-    _title: 'Add Migration YML'
+    _title: 'Create Migration - YAML'
   requirements:
     _permission: 'administer migrations'
 
