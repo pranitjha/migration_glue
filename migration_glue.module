@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -44,11 +45,47 @@ function migration_glue_form_alter(array &$form, FormStateInterface $form_state,
     // Adding a submit button.
     $form['next_step'] = [
       '#type' => 'submit',
-      '#value' => t('Go to next step'),
+      '#value' => t('Save migration'),
       '#validate' => ['_migration_glue_validate_handler'],
       '#submit' => ['_migration_glue_submit_handler'],
     ];
+
+    $form['actions']['back_link'] = [
+      '#title' => t('Go Back'),
+      '#type' => 'link',
+      '#url' => Url::fromRoute('migration_glue.list_migration', ['migration_group' => 'default']),
+      '#attributes' => [
+        'class' => ['button']
+      ]
+    ];
   }
+  // For migration run screen.
+  elseif ($form_id == 'migration_execute_form') {
+    $form['operations']['submit']['#weight'] = 0;
+    $form['operations']['go_back'] = [
+      '#title' => t('Go Back'),
+      '#weight' => 0,
+      '#type' => 'link',
+      '#url' => Url::fromRoute('migration_glue.list_migration', ['migration_group' => 'default']),
+      '#attributes' => [
+        'class' => ['button']
+      ]
+    ];
+    $form['#submit'][] = '_migration_glue_migration_execute_submit_handler';
+  }
+}
+
+/**
+ * Custom submit handler for migration execution form.
+ */
+function _migration_glue_migration_execute_submit_handler(array &$form, FormStateInterface $form_state) {
+  \Drupal::messenger()->addStatus(t('Migration operation:@operation executed successfully.', [
+    '@operation' => $form_state->getValue('operation'),
+  ]));
+  // Redirect to next step.
+  $form_state->setRedirect('migration_glue.list_migration', [
+    'migration_group' => 'default',
+  ]);
 }
 
 /**
@@ -96,15 +133,19 @@ function _migration_glue_submit_handler(array &$form, FormStateInterface $form_s
   // Parsed yml to array.
   $parsed_yml = Yaml::parse($output);
 
-  // Register the migration in system.
-  \Drupal::service('migration_glue.manager')->registerMigration($parsed_yml);
+  if (is_array($parsed_yml) && !empty($parsed_yml)) {
+    // Register the migration in system.
+    \Drupal::service('migration_glue.manager')->registerMigration($parsed_yml);
 
-  // Adding status message.
-  \Drupal::messenger()->addStatus(t('Migration @migration has been created successfully.', ['@migration' => $parsed_yml['id']]));
+    // Adding status message.
+    \Drupal::messenger()->addStatus(t('Migration @migration has been created successfully.', ['@migration' => $parsed_yml['id']]));
+  }
+  else {
+    \Drupal::messenger()->addError(t('You just saved form without creating migration.'));
+  }
 
   // Redirect to next step.
-  $form_state->setRedirect('migration_glue.run_migration', [
-    'migration' => $parsed_yml['id'],
-    'migration_group' => $parsed_yml['migration_group'],
+  $form_state->setRedirect('migration_glue.list_migration', [
+    'migration_group' => 'default',
   ]);
 }

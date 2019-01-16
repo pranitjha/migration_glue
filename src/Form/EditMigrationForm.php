@@ -7,6 +7,7 @@ use Drupal\migration_glue\MigrationGlueManager;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Serialization\Yaml;
+use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -107,6 +108,15 @@ class EditMigrationForm extends FormBase {
     $form['actions']['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Update'),
+    ];
+
+    $form['actions']['back_link'] = [
+      '#title' => $this->t('Go Back'),
+      '#type' => 'link',
+      '#url' => Url::fromRoute('migration_glue.list_migration', ['migration_group' => 'default']),
+      '#attributes' => [
+        'class' => ['button']
+      ]
     ];
 
     return $form;
